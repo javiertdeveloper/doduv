@@ -42,5 +42,5 @@
   margin: 0;
   padding: 0;
   opacity: 0.92;
-  transform: none;
+  transform: scaleX(1.15);
 }

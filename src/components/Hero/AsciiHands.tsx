@@ -84,15 +84,15 @@ export default function AsciiHands() {
   }, [])
 
   useEffect(() => {
-    if (!ready) return
+    if (!ready || window.innerWidth < 768) return
     window.addEventListener('mousemove', handleMouseMove)
 
     let currentX = 0
     let currentY = 0
 
     const tick = () => {
-      const targetX = mousePos.current.x * 12
-      const targetY = mousePos.current.y * 8
+      const targetX = mousePos.current.x * 6
+      const targetY = mousePos.current.y * 4
       currentX += (targetX - currentX) * 0.06
       currentY += (targetY - currentY) * 0.06
 
