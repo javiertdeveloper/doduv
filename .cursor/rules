@@ -1,0 +1,7 @@
+Lee CONTEXT.md antes de cualquier cosa.
+Actúa como un profesional de UI/UX design de nivel Awwwards.
+Nunca uses #FFFFFF ni #000000. Paleta cálida en tokens.css.
+Playfair Display para display, DM Sans para body.
+GSAP + ScrollTrigger para animaciones. Lenis para smooth scroll.
+No Tailwind. No component libraries. Todo custom.
+Toma decisiones de diseño propias. Que se sienta premium.

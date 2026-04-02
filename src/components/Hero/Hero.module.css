@@ -1,0 +1,194 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: var(--chocolate);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CSS leather texture — layered noise + gradients */
+.texture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    /* fine grain */
+    repeating-conic-gradient(
+      rgba(30, 18, 11, 0.03) 0% 25%,
+      transparent 0% 50%
+    ) 0 0 / 4px 4px,
+    /* larger grain variation */
+    repeating-conic-gradient(
+      rgba(26, 20, 18, 0.04) 0% 25%,
+      transparent 0% 50%
+    ) 2px 2px / 6px 6px,
+    /* horizontal leather lines */
+    repeating-linear-gradient(
+      180deg,
+      transparent 0px,
+      transparent 3px,
+      rgba(30, 18, 11, 0.06) 3px,
+      rgba(30, 18, 11, 0.06) 3.5px,
+      transparent 3.5px,
+      transparent 8px
+    ),
+    /* subtle crease pattern */
+    repeating-linear-gradient(
+      92deg,
+      transparent 0px,
+      transparent 40px,
+      rgba(30, 18, 11, 0.03) 40px,
+      rgba(30, 18, 11, 0.03) 40.5px,
+      transparent 40.5px,
+      transparent 120px
+    ),
+    /* warm vignette */
+    radial-gradient(
+      ellipse 80% 70% at 50% 50%,
+      transparent 20%,
+      rgba(30, 18, 11, 0.4) 100%
+    );
+}
+
+/* Engraved logo letters */
+.glyph {
+  position: absolute;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: #000;
+  opacity: 0;
+  z-index: 3;
+  user-select: none;
+  line-height: 0.8;
+  pointer-events: none;
+}
+
+.glyphLeft {
+  top: -2vh;
+  left: 2vw;
+  font-size: clamp(20rem, 40vw, 50rem);
+}
+
+.glyphRight {
+  bottom: 8vh;
+  right: 2vw;
+  font-size: clamp(20rem, 40vw, 50rem);
+}
+
+/* Center ø symbol */
+.symbol {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(13rem, 24vw, 24rem);
+  height: auto;
+  opacity: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.symbol img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Right brand block — horizontal on desktop, behind hands */
+.rightBlock {
+  position: absolute;
+  top: 17%;
+  right: 2vw;
+  transform: none;
+  writing-mode: horizontal-tb;
+  z-index: 1;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.verticalBrand {
+  font-family: var(--font-display);
+  font-size: 96px;
+  font-weight: 600;
+  color: #000;
+  letter-spacing: 0.02em;
+}
+
+/* Bottom left block */
+.bottomLeft {
+  position: absolute;
+  bottom: 80px;
+  left: 120px;
+  z-index: 10;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.tagline {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #000;
+  margin-bottom: 14px;
+}
+
+.services {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .glyphLeft {
+    font-size: clamp(12rem, 55vw, 22rem);
+    top: -1vh;
+    left: 1vw;
+  }
+
+  .glyphRight {
+    font-size: clamp(12rem, 55vw, 22rem);
+    bottom: 8vh;
+    right: 1vw;
+  }
+
+  .symbol {
+    width: clamp(8rem, 35vw, 14rem);
+  }
+
+  .rightBlock {
+    top: 15%;
+    right: 24px;
+    transform: none;
+    writing-mode: vertical-rl;
+    z-index: 10;
+  }
+
+  .verticalBrand {
+    font-size: 48px;
+  }
+
+  .bottomLeft {
+    bottom: 40px;
+    left: 28px;
+    right: 28px;
+  }
+
+  .tagline {
+    font-size: 15px;
+  }
+
+  .services {
+    font-size: 12px;
+  }
+}

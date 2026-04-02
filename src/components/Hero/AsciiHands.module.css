@@ -1,0 +1,24 @@
+.container {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ascii {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 5px;
+  line-height: 5px;
+  letter-spacing: 0;
+  color: var(--cream);
+  white-space: pre;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  opacity: 0.92;
+}
