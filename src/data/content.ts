@@ -21,6 +21,14 @@ export const processSteps = [
   { number: '04', title: 'Lanzamiento', description: 'Acompañamos después del lanzamiento.' },
 ]
 
+export const projects = [
+  { id: 'sushi', title: 'Restaurante Omakase', category: 'Sitio Web', aspect: 'landscape' },
+  { id: 'arquitectura', title: 'Estudio de Arquitectura', category: 'Sitio Web', aspect: 'landscape' },
+  { id: 'seguros', title: 'Agentes de Seguros', category: 'Sitio Web', aspect: 'landscape' },
+  { id: 'kiosko', title: 'Kiosko Aeropuerto', category: 'Aplicación', aspect: 'portrait' },
+  { id: 'marketing-ia', title: 'Marketing con IA', category: 'Inteligencia Artificial', aspect: 'landscape' },
+]
+
 export const metrics = [
   { value: 12, suffix: '+', label: 'Proyectos entregados' },
   { value: 1.4, suffix: 's', label: 'Vel. promedio de carga' },

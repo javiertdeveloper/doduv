@@ -52,6 +52,16 @@ export default function Hero() {
         { opacity: 1, y: 0, duration: 1.2 },
         1.8
       )
+
+      // Idle: ø floating animation — starts after entrance completes
+      gsap.to(symbolRef.current, {
+        y: -8,
+        duration: 4.5,
+        ease: 'sine.inOut',
+        repeat: -1,
+        yoyo: true,
+        delay: 3,
+      })
     })
   }, [])
 

@@ -4,8 +4,25 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 2rem 0;
+  padding: 1.5rem 3rem;
   mix-blend-mode: difference;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.4s ease, padding 0.4s ease;
+}
+
+.logo {
+  position: absolute;
+  left: 3rem;
+  opacity: 0;
+  pointer-events: none;
+  height: 24px;
+}
+
+.logo img {
+  height: 100%;
+  width: auto;
 }
 
 .list {
@@ -14,6 +31,7 @@
   align-items: center;
   gap: 3.5rem;
   list-style: none;
+  transition: transform 0.4s ease;
 }
 
 .link {
@@ -24,7 +42,7 @@
   letter-spacing: 0.25em;
   color: var(--cream);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, color 0.4s ease;
   position: relative;
 }
 
@@ -47,7 +65,33 @@
   opacity: 1;
 }
 
+/* Scrolled state */
+.scrolled {
+  mix-blend-mode: normal;
+  background: rgba(242, 232, 220, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1rem 3rem;
+}
+
+.scrolled .logo {
+  pointer-events: auto;
+}
+
+.scrolled .link {
+  color: var(--charcoal);
+}
+
 @media (max-width: 768px) {
+  .nav {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .logo {
+    left: 1.5rem;
+    height: 18px;
+  }
+
   .list {
     gap: 2rem;
   }
@@ -55,5 +99,9 @@
   .link {
     font-size: 0.6rem;
     letter-spacing: 0.2em;
+  }
+
+  .scrolled {
+    padding: 0.75rem 1.5rem;
   }
 }
