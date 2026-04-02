@@ -48,6 +48,8 @@
 
 @media (max-width: 768px) {
   .container {
+    left: -1.6%;
+    width: 103%;
     transform: translateY(-50%) scale(1.35);
   }
 }
