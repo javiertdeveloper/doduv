@@ -31,11 +31,12 @@ export default function Hero() {
         { opacity: 1, x: 0, duration: 1.6 },
         0.15
       )
+      // Phase 1.5: Symbol reveals after hands start sliding in
       tl.fromTo(
         symbolRef.current,
-        { opacity: 0, scale: 0.92 },
-        { opacity: 1, scale: 1, duration: 1.8 },
-        0.3
+        { opacity: 0, scale: 0.8, y: 20 },
+        { opacity: 1, scale: 1, y: 0, duration: 1.6, ease: 'power2.out' },
+        0.9
       )
 
       // Phase 2: Texts fade in after hands are visible
@@ -84,7 +85,7 @@ export default function Hero() {
 
       {/* Bottom left block */}
       <div ref={bottomLeftRef} className={styles.bottomLeft}>
-        <p className={styles.tagline}>MENOS PALABRAS. M&Aacute;S RESULTADOS.</p>
+        <p className={styles.tagline}>Construimos lo que tu negocio necesita.</p>
         <p className={styles.services}>WEB &middot; SOFTWARE &middot; INTELIGENCIA ARTIFICIAL</p>
       </div>
 
