@@ -91,8 +91,8 @@ export default function AsciiHands() {
     let currentY = 0
 
     const tick = () => {
-      const targetX = mousePos.current.x * 6
-      const targetY = mousePos.current.y * 4
+      const targetX = mousePos.current.x * 12
+      const targetY = mousePos.current.y * 8
       currentX += (targetX - currentX) * 0.06
       currentY += (targetY - currentY) * 0.06
 
