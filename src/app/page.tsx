@@ -1,13 +1,13 @@
 import Hero from '@/components/Hero/Hero'
-import Metrics from '@/components/Metrics/Metrics'
 import Portfolio from '@/components/Portfolio/Portfolio'
+import Services from '@/components/Services/Services'
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <Metrics />
       <Portfolio />
+      <Services />
     </main>
   )
 }

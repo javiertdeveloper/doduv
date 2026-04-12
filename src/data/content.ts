@@ -9,9 +9,24 @@ export const siteConfig = {
 }
 
 export const services = [
-  { id: 'web', title: 'Sitios web que convierten', description: 'Diseño editorial + performance + SEO.', isPrimary: true },
-  { id: 'apps', title: 'Apps que tu equipo usa', description: 'Diseño centrado en el usuario.', isPrimary: false },
-  { id: 'ia', title: 'Automatiza lo repetitivo', description: 'Chatbots, automatización, análisis de datos.', isPrimary: false },
+  {
+    id: 'web',
+    title: 'Sitios web que convierten',
+    description: 'Diseño editorial, performance brutal, SEO que posiciona.',
+    includes: ['Landing pages', 'E-commerce', 'Sitios corporativos', 'Rediseños'],
+  },
+  {
+    id: 'apps',
+    title: 'Apps que tu equipo usa',
+    description: 'Software a medida que resuelve, no que complica.',
+    includes: ['Apps internas', 'Dashboards', 'Sistemas de gestión', 'Kioscos'],
+  },
+  {
+    id: 'ia',
+    title: 'Inteligencia Artificial',
+    description: 'Automatiza lo que te quita tiempo. Potencia lo que te da dinero.',
+    includes: ['Chatbots', 'Agentes IA', 'Generación de contenido', 'Análisis de datos'],
+  },
 ]
 
 export const processSteps = [
@@ -21,12 +36,24 @@ export const processSteps = [
   { number: '04', title: 'Lanzamiento', description: 'Acompañamos después del lanzamiento.' },
 ]
 
+export const featuredProject = {
+  id: 'marketing-ia',
+  title: 'Marketing con IA',
+  category: 'Inteligencia Artificial',
+  description: 'Imágenes de producto, posts para redes y material visual — generado con inteligencia artificial.',
+  samples: [
+    { label: 'Producto', ascii: '{ }' },
+    { label: 'Campaña', ascii: '< />' },
+    { label: 'Social', ascii: '# @' },
+    { label: 'Branding', ascii: '& %' },
+  ],
+}
+
 export const projects = [
-  { id: 'sushi', title: 'Restaurante Omakase', category: 'Sitio Web', aspect: 'landscape' },
+  { id: 'kuro-sushi', title: 'Kuro Sushi', category: 'Sitio Web', aspect: 'landscape', video: '/videos/Kurosushivideo.mp4' },
   { id: 'arquitectura', title: 'Estudio de Arquitectura', category: 'Sitio Web', aspect: 'landscape' },
   { id: 'seguros', title: 'Agentes de Seguros', category: 'Sitio Web', aspect: 'landscape' },
-  { id: 'kiosko', title: 'Kiosko Aeropuerto', category: 'Aplicación', aspect: 'portrait' },
-  { id: 'marketing-ia', title: 'Marketing con IA', category: 'Inteligencia Artificial', aspect: 'landscape' },
+  { id: 'kiosko', title: 'Kiosko Aeropuerto', category: 'Aplicación', aspect: 'portrait', video: '/videos/Aerokisko.mp4' },
 ]
 
 export const metrics = [

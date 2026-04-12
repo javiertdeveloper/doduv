@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { Fragment, useEffect, useRef } from 'react'
 import { metrics } from '@/data/content'
 import styles from './Metrics.module.css'
 
@@ -44,16 +44,16 @@ export default function Metrics() {
     <section ref={sectionRef} className={styles.section}>
       <div className={styles.grid}>
         {metrics.map((metric, i) => (
-          <>
-            {i > 0 && <div key={`sep-${i}`} className={styles.separator} />}
-            <div key={metric.label} className={styles.metric}>
+          <Fragment key={metric.label}>
+            {i > 0 && <div className={styles.separator} />}
+            <div className={styles.metric}>
               <p className={styles.value}>
                 <span ref={(el) => { valueRefs.current[i] = el }}>0</span>
                 <span className={styles.suffix}>{metric.suffix}</span>
               </p>
               <p className={styles.label}>{metric.label}</p>
             </div>
-          </>
+          </Fragment>
         ))}
       </div>
     </section>
