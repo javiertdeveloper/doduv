@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding: 7rem 4rem;
+  padding: 12rem 4rem 20rem;
   background: var(--chocolate);
   overflow: hidden;
 }
@@ -32,7 +32,7 @@
 /* Dimetrodon — black silhouette */
 .dimetrodon {
   position: absolute;
-  top: 71%;
+  top: 74%;
   left: 45%;
   transform: translate(-50%, -50%);
   width: 155%;
@@ -67,12 +67,12 @@
 .content {
   position: relative;
   z-index: 1;
-  max-width: 600px;
-  margin-right: auto;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .header {
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
 }
 
 .eyebrow {
@@ -100,56 +100,56 @@
 
 .list {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .card {
-  padding: 2.5rem 0;
-  border-top: 1px solid rgba(196, 154, 74, 0.15);
+  flex: 1;
+  padding: 2rem 2.5rem;
+  border-left: 1px solid rgba(196, 154, 74, 0.2);
 }
 
-.card:last-child {
-  border-bottom: 1px solid rgba(196, 154, 74, 0.15);
+.card:first-child {
+  border-left: none;
+  padding-left: 0;
 }
 
 .cardHeader {
-  display: flex;
-  align-items: baseline;
-  gap: 1.5rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .cardNumber {
   font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-size: 3rem;
   font-weight: 400;
   color: var(--gold);
-  opacity: 0.6;
+  opacity: 0.25;
+  line-height: 1;
+  display: block;
+  margin-bottom: 1.25rem;
 }
 
 .cardTitle {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
   font-weight: 500;
   color: var(--cream);
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .cardDesc {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   font-weight: 300;
   color: var(--tan);
   line-height: 1.7;
   margin-bottom: 1.25rem;
-  padding-left: 3.5rem;
 }
 
 .includes {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  padding-left: 3.5rem;
+  gap: 0.4rem;
 }
 
 .includeTag {
@@ -184,19 +184,23 @@
 
   .content {
     max-width: 100%;
-    margin-left: 0;
   }
 
-  .cardDesc,
-  .includes {
-    padding-left: 0;
+  .list {
+    flex-direction: column;
   }
 
-  .cardHeader {
-    gap: 1rem;
+  .card {
+    border-left: none;
+    border-top: 1px solid rgba(196, 154, 74, 0.2);
+    padding: 1.5rem 0;
+  }
+
+  .card:first-child {
+    border-top: none;
   }
 
   .header {
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 }
