@@ -2,7 +2,7 @@
   position: relative;
   padding: 7rem 4rem;
   background: var(--chocolate);
-  overflow: visible;
+  overflow: hidden;
 }
 
 .texture {
@@ -29,40 +29,22 @@
     );
 }
 
-/* Wrapper that clips cream layer to section bounds */
-.asciiClip {
+/* Dimetrodon — black silhouette */
+.dimetrodon {
   position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-/* Shared ASCII styles */
-.asciiCream,
-.asciiDark {
-  position: absolute;
-  top: 85%;
-  left: 50%;
+  top: 71%;
+  left: 45%;
   transform: translate(-50%, -50%);
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 5px;
-  line-height: 5px;
-  letter-spacing: 0;
-  opacity: 1;
-  white-space: pre;
-  user-select: none;
+  width: 155%;
   pointer-events: none;
+  user-select: none;
+  filter: brightness(0);
   z-index: 0;
 }
 
-/* Visible inside Services (cream on chocolate) */
-.asciiCream {
-  color: var(--cream);
-}
-
-/* Visible outside Services (chocolate on cream bg of portfolio) */
-.asciiDark {
-  color: var(--chocolate);
+.dimetrodon img {
+  width: 100%;
+  height: auto;
 }
 
 /* Dino PNG — mobile only (hidden on desktop) */
@@ -188,8 +170,7 @@
     padding: 5rem 1.5rem;
   }
 
-  .asciiClip,
-  .asciiDark {
+  .dimetrodon {
     display: none;
   }
 

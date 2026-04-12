@@ -115,15 +115,16 @@ export default function Services() {
       <div className={styles.texture} />
       <canvas ref={canvasRef} style={{ display: 'none' }} />
 
-      {/* Desktop: ASCII dimetrodon — dual color effect */}
-      {dimetrodonAscii && (
-        <>
-          <pre className={styles.asciiDark} aria-hidden="true">{dimetrodonAscii}</pre>
-          <div className={styles.asciiClip}>
-            <pre className={styles.asciiCream} aria-hidden="true">{dimetrodonAscii}</pre>
-          </div>
-        </>
-      )}
+      {/* Desktop: dimetrodon black silhouette */}
+      <div className={styles.dimetrodon} aria-hidden="true">
+        <Image
+          src="/images/dimetrodon.png"
+          alt=""
+          width={1200}
+          height={680}
+          priority={false}
+        />
+      </div>
 
       {/* Mobile: PNG dino silhouette (unchanged) */}
       <div className={styles.dino} aria-hidden="true">
