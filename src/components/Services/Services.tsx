@@ -137,14 +137,13 @@ export default function Services() {
         />
       </div>
 
-      <div className={styles.content}>
-        <div ref={headerRef} className={styles.header}>
-          <p className={styles.eyebrow}>Servicios</p>
-          <h2 className={styles.title}>
-            Lo que <span className={styles.titleAccent}>hacemos</span>
-          </h2>
-        </div>
+      {/* Title — z-index below dimetrodon so bones overlap text */}
+      <div ref={headerRef} className={styles.heroTitle}>
+        <p className={styles.eyebrow}>Lo que hacemos</p>
+        <h2 className={styles.title}>Servicios</h2>
+      </div>
 
+      <div className={styles.content}>
         <div className={styles.list}>
           {services.map((service, i) => (
             <div
