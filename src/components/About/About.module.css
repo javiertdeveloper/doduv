@@ -1,0 +1,97 @@
+.section {
+  position: relative;
+  padding: 8rem 4rem;
+  background: #000000;
+  overflow: hidden;
+}
+
+.layout {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Left — title */
+.left {
+  position: sticky;
+  top: 8rem;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 8vw, 8rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--cream);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+/* Right — blocks */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 1rem;
+}
+
+.block {
+  padding: 2.5rem 0;
+  border-top: 1px solid rgba(196, 154, 74, 0.25);
+}
+
+.block:last-child {
+  border-bottom: 1px solid rgba(196, 154, 74, 0.25);
+}
+
+.blockHeading {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.blockText {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  font-weight: 300;
+  color: var(--tan);
+  line-height: 1.8;
+  max-width: 38ch;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .section {
+    padding: 5rem 1.5rem;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .left {
+    position: relative;
+    top: auto;
+  }
+
+  .title {
+    font-size: clamp(3rem, 12vw, 4.5rem);
+  }
+}
