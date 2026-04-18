@@ -1,0 +1,141 @@
+.section {
+  position: relative;
+  background: #000000;
+  padding: 3rem 4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.phrase {
+  font-family: var(--font-body);
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  font-weight: 300;
+  color: var(--tan);
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.contact {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 0;
+}
+
+.question {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+}
+
+.cta {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 500;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.email {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--cream);
+  text-decoration: none;
+  padding: 0.75em 2em;
+  border: 1px solid rgba(196, 154, 74, 0.3);
+  border-radius: 2px;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.email:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 18vw, 20rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--cream);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  text-align: center;
+  margin-top: auto;
+  padding-bottom: 4rem;
+}
+
+.footer {
+  width: 100%;
+  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(196, 154, 74, 0.15);
+}
+
+.footerText {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tan);
+  flex: 1;
+}
+
+.footerText:last-child {
+  text-align: right;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex: 1;
+}
+
+.footerLink {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tan);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerLink:hover {
+  color: var(--gold);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 1.5rem 0;
+  }
+
+  .phrase {
+    margin-bottom: 4rem;
+  }
+
+  .brand {
+    font-size: clamp(4rem, 20vw, 6rem);
+    padding-bottom: 3rem;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding: 2rem 0;
+  }
+}
