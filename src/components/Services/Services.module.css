@@ -188,9 +188,9 @@
 
   .dino {
     display: block;
-    right: -10%;
-    bottom: 0;
-    width: 85%;
+    right: -5%;
+    bottom: -1.5%;
+    width: 90%;
     filter: brightness(0);
   }
 

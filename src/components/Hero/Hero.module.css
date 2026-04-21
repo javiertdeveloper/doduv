@@ -113,7 +113,7 @@
 /* Right brand block — horizontal on desktop, behind hands */
 .rightBlock {
   position: absolute;
-  top: 17%;
+  top: 15.5%;
   right: 2vw;
   transform: none;
   writing-mode: horizontal-tb;
@@ -189,6 +189,7 @@
     right: 16px;
     transform: none;
     writing-mode: vertical-rl;
+    text-orientation: sideways;
     z-index: 10;
   }
 

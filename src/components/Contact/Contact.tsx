@@ -53,7 +53,7 @@ export default function Contact() {
   return (
     <section className={styles.section} id="contacto">
       <p ref={phraseRef} className={styles.phrase}>
-        Cualquier idea es posible.
+        Diseñamos soluciones. Desarrollamos resultados.
       </p>
 
       <div ref={revealRef} className={styles.contact}>
