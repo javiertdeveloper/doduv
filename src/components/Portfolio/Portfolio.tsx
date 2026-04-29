@@ -1,11 +1,68 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { featuredProject, projects } from '@/data/content'
 import styles from './Portfolio.module.css'
 
 const ASCII_MARKS = ['{ }', '< />', '#_', '0 1']
 const CARD_CLASSES = ['card1', 'card2', 'card3', 'card4'] as const
+
+/** Double-buffered video cycle — both videos stay mounted, z-index swap avoids gap on transition. */
+function VideoCycle({ sources }: { sources: string[] }) {
+  const [front, setFront] = useState(0)
+  const videosRef = useRef<(HTMLVideoElement | null)[]>([])
+
+  const handleEnded = () => {
+    const next = (front + 1) % sources.length
+    const nextVid = videosRef.current[next]
+    if (nextVid) {
+      nextVid.currentTime = 0
+      nextVid.play().catch(() => {})
+    }
+    setFront(next)
+  }
+
+  return (
+    <>
+      {sources.map((src, i) => (
+        <video
+          key={src}
+          ref={(el) => { videosRef.current[i] = el }}
+          className={`${styles.mediaEl} ${i === front ? styles.videoFront : styles.videoBack}`}
+          src={src}
+          autoPlay
+          muted
+          playsInline
+          preload="auto"
+          onEnded={i === front ? handleEnded : undefined}
+        />
+      ))}
+    </>
+  )
+}
+
+/** Crossfades between images on a timed interval. */
+function ImageCycle({ sources }: { sources: string[] }) {
+  const [index, setIndex] = useState(0)
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % sources.length)
+    }, 4500)
+    return () => clearInterval(id)
+  }, [sources.length])
+  return (
+    <div className={styles.imageStack}>
+      {sources.map((src, i) => (
+        <img
+          key={src}
+          src={src}
+          alt=""
+          className={`${styles.stackImage} ${i === index ? styles.stackActive : ''}`}
+        />
+      ))}
+    </div>
+  )
+}
 
 export default function Portfolio() {
   const headerRef = useRef<HTMLDivElement>(null)
@@ -111,12 +168,28 @@ export default function Portfolio() {
             <p className={styles.featuredDesc}>{featuredProject.description}</p>
           </div>
           <div className={styles.samplesGrid}>
-            {featuredProject.samples.map((sample) => (
-              <div key={sample.label} className={styles.sample}>
+            {featuredProject.media.map((item) => (
+              <div
+                key={item.id}
+                className={`${styles.sample} ${styles[`sample_${item.id}`]} ${item.aspect === 'portrait' ? styles.samplePortrait : styles.sampleLandscape}`}
+              >
                 <div className={styles.sampleImage}>
-                  <span className={styles.sampleAscii} aria-hidden="true">{sample.ascii}</span>
+                  {item.type === 'video-cycle' ? (
+                    <VideoCycle sources={item.sources} />
+                  ) : item.type === 'image-cycle' ? (
+                    <ImageCycle sources={item.sources} />
+                  ) : (
+                    <video
+                      className={styles.mediaEl}
+                      src={item.src}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                    />
+                  )}
                 </div>
-                <span className={styles.sampleLabel}>{sample.label}</span>
               </div>
             ))}
           </div>
@@ -142,6 +215,8 @@ export default function Portfolio() {
                   playsInline
                   preload="metadata"
                 />
+              ) : 'images' in project && project.images ? (
+                <ImageCycle sources={project.images} />
               ) : (
                 <div className={styles.placeholder}>
                   <span className={styles.asciiMark} aria-hidden="true">
@@ -153,10 +228,40 @@ export default function Portfolio() {
             <p className={styles.number}>{String(i + 1).padStart(2, '0')}</p>
             <div className={styles.info}>
               <h3 className={styles.projectTitle}>{project.title}</h3>
-              <span className={styles.category}>{project.category}</span>
             </div>
           </div>
         ))}
+
+        {/* Mini-CTA — fills empty col 1 row 3, beside Kiosko portrait */}
+        <a
+          className={styles.cta}
+          href="#contacto"
+          onClick={(e) => {
+            e.preventDefault()
+            const el = document.querySelector('#contacto')
+            if (el) el.scrollIntoView({ behavior: 'smooth' })
+          }}
+        >
+          <p className={styles.ctaEyebrow}>¿Quieres ver más?</p>
+          <h3 className={styles.ctaText}>
+            <span>Hablemos.</span>
+            <span className={styles.ctaArrow} aria-hidden="true">→</span>
+          </h3>
+          <svg
+            className={styles.ctaUnderline}
+            viewBox="0 0 200 8"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M2,5 Q40,1 80,4 T160,3 T198,5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              fill="none"
+              strokeLinecap="round"
+            />
+          </svg>
+        </a>
       </div>
     </section>
   )

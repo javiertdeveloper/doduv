@@ -41,19 +41,19 @@ export const featuredProject = {
   title: 'Marketing con IA',
   category: 'Inteligencia Artificial',
   description: 'Imágenes de producto, posts para redes y material visual — generado con inteligencia artificial.',
-  samples: [
-    { label: 'Producto', ascii: '{ }' },
-    { label: 'Campaña', ascii: '< />' },
-    { label: 'Social', ascii: '# @' },
-    { label: 'Branding', ascii: '& %' },
+  media: [
+    { id: 'gloria', type: 'video-cycle' as const, aspect: 'landscape' as const, sources: ['/images/Gloria1.mp4', '/images/Gloria2.mp4'] },
+    { id: 'conercial', type: 'video' as const, aspect: 'landscape' as const, src: '/images/Comercial.mp4' },
+    { id: 'fotos', type: 'image-cycle' as const, aspect: 'landscape' as const, sources: ['/images/fotododuv.png', '/images/fotododuv1.png', '/images/DODUVropa.png'] },
+    { id: 'reel', type: 'video' as const, aspect: 'portrait' as const, src: '/images/REEL1.mp4' },
   ],
 }
 
 export const projects = [
-  { id: 'kuro-sushi', title: 'Kuro Sushi', category: 'Sitio Web', aspect: 'landscape', video: '/videos/Kurosushivideo.mp4' },
-  { id: 'arquitectura', title: 'Estudio de Arquitectura', category: 'Sitio Web', aspect: 'landscape' },
-  { id: 'seguros', title: 'Agentes de Seguros', category: 'Sitio Web', aspect: 'landscape' },
-  { id: 'kiosko', title: 'Kiosko Aeropuerto', category: 'Aplicación', aspect: 'portrait', video: '/videos/Aerokisko.mp4' },
+  { id: 'kuro-sushi', title: 'Kuro Sushi', category: 'Sitio Web', aspect: 'landscape' as const, video: '/videos/Kurosushivideo.mp4' },
+  { id: 'arquitectura', title: 'Estudio de Arquitectura', category: 'Sitio Web', aspect: 'landscape' as const, video: '/images/Arquitectura.mp4' },
+  { id: 'seguros', title: 'Agentes de Seguros', category: 'Sitio Web', aspect: 'landscape' as const, images: ['/images/ROCAN1.png', '/images/ROCAN2.png', '/images/ROCAN3.png'] },
+  { id: 'kiosko', title: 'Kiosko', category: 'Aplicación', aspect: 'portrait' as const, video: '/videos/Aerokisko.mp4' },
 ]
 
 export const metrics = [
