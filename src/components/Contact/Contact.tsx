@@ -71,7 +71,7 @@ export default function Contact() {
         <div className={styles.footerLinks}>
           <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className={styles.footerLink}>Instagram</a>
           <a href="https://facebook.com/doduv" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>Facebook</a>
-          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>WhatsApp</a>
+          <a href="https://wa.me/528211061030" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>WhatsApp</a>
         </div>
         <span className={styles.footerText}>© {new Date().getFullYear()} doduv</span>
       </footer>

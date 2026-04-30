@@ -20,6 +20,7 @@
 
 .halfLeft {
   clip-path: inset(0 50% 0 0);
+  transform: translateX(1.5%);
 }
 
 .halfRight {

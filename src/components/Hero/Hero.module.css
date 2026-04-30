@@ -80,7 +80,7 @@
 }
 
 .glyphLeft {
-  top: -2vh;
+  top: -1vh;
   left: 2vw;
   font-size: clamp(20rem, 40vw, 50rem);
 }
@@ -165,7 +165,7 @@
 @media (max-width: 768px) {
   .glyphLeft {
     font-size: clamp(12rem, 55vw, 22rem);
-    top: -1vh;
+    top: 1vh;
     left: 1vw;
   }
 
