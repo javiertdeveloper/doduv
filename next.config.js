@@ -1,29 +1,14 @@
 /** @type {import('next').NextConfig} */
+// Static export — produces a fully static `out/` directory that can be deployed
+// to any static host (Hostinger shared, S3, Netlify, GitHub Pages, etc).
+// No Node.js runtime needed in production.
 module.exports = {
+  output: 'export',
   reactStrictMode: true,
   poweredByHeader: false,
-  compress: true,
+  trailingSlash: true,
   images: {
-    formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 60 * 60 * 24 * 30,
-  },
-  async headers() {
-    return [
-      {
-        source: '/images/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
-      {
-        source: '/(.*)',
-        headers: [
-          { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
-          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-        ],
-      },
-    ]
+    // Static export requires unoptimized images (no Next Image Optimization API at runtime).
+    unoptimized: true,
   },
 }
