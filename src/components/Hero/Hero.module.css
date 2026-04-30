@@ -164,14 +164,14 @@
 
 @media (max-width: 768px) {
   .glyphLeft {
-    font-size: clamp(12rem, 55vw, 22rem);
-    top: 1vh;
+    font-size: clamp(10rem, 50vw, 20rem);
+    top: 0;
     left: 1vw;
   }
 
   .glyphRight {
-    font-size: clamp(12rem, 55vw, 22rem);
-    bottom: 8vh;
+    font-size: clamp(10rem, 50vw, 20rem);
+    bottom: 18vh;
     right: 1vw;
   }
 
@@ -194,20 +194,30 @@
   }
 
   .verticalBrand {
-    font-size: 40px;
+    font-size: 36px;
   }
 
   .bottomLeft {
-    bottom: 56px;
-    left: 32px;
-    right: 28px;
+    bottom: 48px;
+    left: 24px;
+    right: 24px;
+    z-index: 11;
   }
 
   .tagline {
-    font-size: 22px;
+    font-size: 18px;
+    line-height: 1.3;
   }
 
   .services {
-    font-size: 13px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (max-width: 380px) {
+  .services {
+    font-size: 10px;
+    letter-spacing: 0.08em;
   }
 }
