@@ -20,11 +20,17 @@
 
 .halfLeft {
   clip-path: inset(0 50% 0 0);
-  transform: translateX(1.5%);
 }
 
 .halfRight {
   clip-path: inset(0 0 0 50%);
+}
+
+/* Desktop only — slight visual shift on left half. Mobile keeps perfect seam. */
+@media (min-width: 769px) {
+  .halfLeft {
+    transform: translateX(1.5%);
+  }
 }
 
 /* Invisible copy that defines the container height */
