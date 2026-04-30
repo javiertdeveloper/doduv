@@ -164,15 +164,15 @@
 
 @media (max-width: 768px) {
   .glyphLeft {
-    font-size: clamp(10rem, 50vw, 20rem);
-    top: 0;
-    left: 1vw;
+    font-size: clamp(8rem, 38vw, 16rem);
+    top: -2vh;
+    left: -3vw;
   }
 
   .glyphRight {
-    font-size: clamp(10rem, 50vw, 20rem);
-    bottom: 18vh;
-    right: 1vw;
+    font-size: clamp(8rem, 38vw, 16rem);
+    bottom: -2vh;
+    right: -3vw;
   }
 
   .symbol {
