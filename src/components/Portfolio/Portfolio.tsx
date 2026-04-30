@@ -2,13 +2,23 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { featuredProject, projects } from '@/data/content'
+import LazyVideo from '@/components/shared/LazyVideo'
+import { useInView } from '@/components/shared/useIntersection'
 import styles from './Portfolio.module.css'
 
 const ASCII_MARKS = ['{ }', '< />', '#_', '0 1']
 const CARD_CLASSES = ['card1', 'card2', 'card3', 'card4'] as const
+const TYPING_WORD = 'trabajo'
+const IMAGE_CYCLE_INTERVAL_MS = 4500
 
-/** Double-buffered video cycle — both videos stay mounted, z-index swap avoids gap on transition. */
+/**
+ * Plays a list of videos in sequence with double-buffering: both videos stay
+ * mounted, z-index swap on `ended` avoids the empty frame between sources.
+ * Gated behind IntersectionObserver so the videos are only mounted when near
+ * the viewport.
+ */
 function VideoCycle({ sources }: { sources: string[] }) {
+  const [wrapRef, inView] = useInView<HTMLDivElement>()
   const [front, setFront] = useState(0)
   const videosRef = useRef<(HTMLVideoElement | null)[]>([])
 
@@ -23,43 +33,53 @@ function VideoCycle({ sources }: { sources: string[] }) {
   }
 
   return (
-    <>
-      {sources.map((src, i) => (
-        <video
-          key={src}
-          ref={(el) => { videosRef.current[i] = el }}
-          className={`${styles.mediaEl} ${i === front ? styles.videoFront : styles.videoBack}`}
-          src={src}
-          autoPlay
-          muted
-          playsInline
-          preload="auto"
-          onEnded={i === front ? handleEnded : undefined}
-        />
-      ))}
-    </>
+    <div ref={wrapRef} className={styles.cycleWrap}>
+      {inView &&
+        sources.map((src, i) => (
+          <video
+            key={src}
+            ref={(el) => {
+              videosRef.current[i] = el
+            }}
+            className={`${styles.mediaEl} ${i === front ? styles.videoFront : styles.videoBack}`}
+            src={src}
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+            onEnded={i === front ? handleEnded : undefined}
+          />
+        ))}
+    </div>
   )
 }
 
-/** Crossfades between images on a timed interval. */
+/** Crossfades between images on a timed interval. Lazy-loads sources on first scroll into view. */
 function ImageCycle({ sources }: { sources: string[] }) {
+  const [wrapRef, inView] = useInView<HTMLDivElement>()
   const [index, setIndex] = useState(0)
+
   useEffect(() => {
+    if (!inView) return
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % sources.length)
-    }, 4500)
+    }, IMAGE_CYCLE_INTERVAL_MS)
     return () => clearInterval(id)
-  }, [sources.length])
+  }, [inView, sources.length])
+
   return (
-    <div className={styles.imageStack}>
-      {sources.map((src, i) => (
-        <img
-          key={src}
-          src={src}
-          alt=""
-          className={`${styles.stackImage} ${i === index ? styles.stackActive : ''}`}
-        />
-      ))}
+    <div ref={wrapRef} className={styles.imageStack}>
+      {inView &&
+        sources.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className={`${styles.stackImage} ${i === index ? styles.stackActive : ''}`}
+          />
+        ))}
     </div>
   )
 }
@@ -77,7 +97,6 @@ export default function Portfolio() {
         gsap.registerPlugin(ScrollTrigger)
 
         // Typing animation
-        const word = 'trabajo'
         const typedEl = typedRef.current
         const cursorEl = cursorRef.current
         if (typedEl && cursorEl) {
@@ -90,12 +109,12 @@ export default function Portfolio() {
             once: true,
             onEnter: () => {
               gsap.to(cursorEl, { opacity: 1, duration: 0.1 })
-              word.split('').forEach((letter, i) => {
+              TYPING_WORD.split('').forEach((letter, i) => {
                 gsap.delayedCall(0.6 + i * 0.12, () => {
                   typedEl.textContent += letter
                 })
               })
-              gsap.delayedCall(0.6 + word.length * 0.12 + 0.5, () => {
+              gsap.delayedCall(0.6 + TYPING_WORD.length * 0.12 + 0.5, () => {
                 gsap.to(cursorEl, {
                   opacity: 0,
                   duration: 0.4,
@@ -107,7 +126,6 @@ export default function Portfolio() {
           })
         }
 
-        // Featured card reveal
         if (featuredRef.current) {
           gsap.fromTo(
             featuredRef.current,
@@ -117,16 +135,11 @@ export default function Portfolio() {
               y: 0,
               duration: 1,
               ease: 'power3.out',
-              scrollTrigger: {
-                trigger: featuredRef.current,
-                start: 'top 85%',
-                once: true,
-              },
+              scrollTrigger: { trigger: featuredRef.current, start: 'top 85%', once: true },
             }
           )
         }
 
-        // Grid cards reveal
         cardsRef.current.forEach((card) => {
           if (!card) return
           gsap.fromTo(
@@ -137,11 +150,7 @@ export default function Portfolio() {
               y: 0,
               duration: 0.8,
               ease: 'power3.out',
-              scrollTrigger: {
-                trigger: card,
-                start: 'top 85%',
-                once: true,
-              },
+              scrollTrigger: { trigger: card, start: 'top 85%', once: true },
             }
           )
         })
@@ -149,13 +158,20 @@ export default function Portfolio() {
     )
   }, [])
 
+  const handleCtaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    document.querySelector('#contacto')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <section className={styles.section} id="trabajo">
       <div ref={headerRef} className={styles.header}>
         <h2 className={styles.title}>
           <span className={styles.titleLabel}>Nuestro</span>{' '}
-          <span ref={typedRef} className={styles.typed}></span>
-          <span ref={cursorRef} className={styles.cursor} aria-hidden="true">|</span>
+          <span ref={typedRef} className={styles.typed} />
+          <span ref={cursorRef} className={styles.cursor} aria-hidden="true">
+            |
+          </span>
         </h2>
       </div>
 
@@ -171,7 +187,9 @@ export default function Portfolio() {
             {featuredProject.media.map((item) => (
               <div
                 key={item.id}
-                className={`${styles.sample} ${styles[`sample_${item.id}`]} ${item.aspect === 'portrait' ? styles.samplePortrait : styles.sampleLandscape}`}
+                className={`${styles.sample} ${styles[`sample_${item.id}`]} ${
+                  item.aspect === 'portrait' ? styles.samplePortrait : styles.sampleLandscape
+                }`}
               >
                 <div className={styles.sampleImage}>
                   {item.type === 'video-cycle' ? (
@@ -179,15 +197,7 @@ export default function Portfolio() {
                   ) : item.type === 'image-cycle' ? (
                     <ImageCycle sources={item.sources} />
                   ) : (
-                    <video
-                      className={styles.mediaEl}
-                      src={item.src}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                    />
+                    <LazyVideo className={styles.mediaEl} src={item.src} />
                   )}
                 </div>
               </div>
@@ -196,25 +206,23 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* Other projects — compact grid */}
+      {/* Projects grid */}
       <div className={styles.grid}>
         {projects.map((project, i) => (
           <div
             key={project.id}
-            ref={(el) => { cardsRef.current[i] = el }}
+            ref={(el) => {
+              cardsRef.current[i] = el
+            }}
             className={`${styles.card} ${styles[CARD_CLASSES[i]]}`}
           >
-            <div className={`${styles.imageWrap} ${project.aspect === 'portrait' ? styles.imagePortrait : styles.imageLandscape}`}>
+            <div
+              className={`${styles.imageWrap} ${
+                project.aspect === 'portrait' ? styles.imagePortrait : styles.imageLandscape
+              }`}
+            >
               {'video' in project && project.video ? (
-                <video
-                  className={styles.videoEl}
-                  src={project.video}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                />
+                <LazyVideo className={styles.videoEl} src={project.video} />
               ) : 'images' in project && project.images ? (
                 <ImageCycle sources={project.images} />
               ) : (
@@ -233,19 +241,13 @@ export default function Portfolio() {
         ))}
 
         {/* Mini-CTA — fills empty col 1 row 3, beside Kiosko portrait */}
-        <a
-          className={styles.cta}
-          href="#contacto"
-          onClick={(e) => {
-            e.preventDefault()
-            const el = document.querySelector('#contacto')
-            if (el) el.scrollIntoView({ behavior: 'smooth' })
-          }}
-        >
+        <a className={styles.cta} href="#contacto" onClick={handleCtaClick}>
           <p className={styles.ctaEyebrow}>¿Quieres ver más?</p>
           <h3 className={styles.ctaText}>
             <span>Hablemos.</span>
-            <span className={styles.ctaArrow} aria-hidden="true">→</span>
+            <span className={styles.ctaArrow} aria-hidden="true">
+              →
+            </span>
           </h3>
           <svg
             className={styles.ctaUnderline}

@@ -182,6 +182,13 @@
 }
 
 /* Double-buffered video stacking — avoids gap on video swap */
+.cycleWrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .videoFront {
   position: absolute;
   inset: 0;

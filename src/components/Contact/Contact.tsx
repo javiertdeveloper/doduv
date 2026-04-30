@@ -67,11 +67,17 @@ export default function Contact() {
       <div className={styles.brand}>DODUV</div>
 
       <footer className={styles.footer}>
-        <span className={styles.footerText}>México</span>
+        <span className={styles.footerText}>{siteConfig.location}</span>
         <div className={styles.footerLinks}>
-          <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className={styles.footerLink}>Instagram</a>
-          <a href="https://facebook.com/doduv" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>Facebook</a>
-          <a href="https://wa.me/528211061030" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>WhatsApp</a>
+          <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className={styles.footerLink}>
+            Instagram
+          </a>
+          <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className={styles.footerLink}>
+            Facebook
+          </a>
+          <a href={siteConfig.social.whatsapp} target="_blank" rel="noopener noreferrer" className={styles.footerLink}>
+            WhatsApp
+          </a>
         </div>
         <span className={styles.footerText}>© {new Date().getFullYear()} doduv</span>
       </footer>

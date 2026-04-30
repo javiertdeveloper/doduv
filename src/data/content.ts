@@ -2,8 +2,12 @@ export const siteConfig = {
   name: 'Doduv',
   tagline: 'Lo digital, bien hecho.',
   email: 'contacto@doduv.com',
-  location: 'Nuevo León, México',
-  social: { instagram: 'https://instagram.com/doduv', linkedin: 'https://linkedin.com/company/doduv' },
+  location: 'México',
+  social: {
+    instagram: 'https://instagram.com/doduv',
+    facebook: 'https://facebook.com/doduv',
+    whatsapp: 'https://wa.me/528211061030',
+  },
   availableSlots: 3,
   availableMonth: 'abril',
 }

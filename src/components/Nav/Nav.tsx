@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import { siteConfig } from '@/data/content'
 import styles from './Nav.module.css'
 
 const links = [
@@ -186,8 +187,8 @@ export default function Nav() {
           </ul>
 
           <div className={styles.overlayFooter}>
-            <span>doduv — México</span>
-            <span>contacto@doduv.com</span>
+            <span>doduv — {siteConfig.location}</span>
+            <span>{siteConfig.email}</span>
           </div>
         </div>
       )}
