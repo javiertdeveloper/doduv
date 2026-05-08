@@ -186,9 +186,9 @@
   }
 
   .rightBlock {
-    top: 15%;
+    top: 50%;
     right: 16px;
-    transform: none;
+    transform: translateY(-50%);
     writing-mode: vertical-rl;
     text-orientation: sideways;
     z-index: 10;
