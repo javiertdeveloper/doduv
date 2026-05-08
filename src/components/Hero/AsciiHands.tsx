@@ -31,7 +31,7 @@ export default function AsciiHands() {
     if (!ctx) return
 
     const img = new Image()
-    img.src = '/images/hands.png'
+    img.src = '/hero/hands.png'
 
     img.onload = () => {
       const cellW = 3

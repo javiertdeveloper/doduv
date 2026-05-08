@@ -46,18 +46,18 @@ export const featuredProject = {
   category: 'Inteligencia Artificial',
   description: 'Imágenes de producto, posts para redes y material visual — generado con inteligencia artificial.',
   media: [
-    { id: 'gloria', type: 'video-cycle' as const, aspect: 'landscape' as const, sources: ['/images/Gloria1.mp4', '/images/Gloria2.mp4'] },
-    { id: 'conercial', type: 'video' as const, aspect: 'landscape' as const, src: '/images/Comercial.mp4' },
-    { id: 'fotos', type: 'image-cycle' as const, aspect: 'landscape' as const, sources: ['/images/fotododuv.png', '/images/fotododuv1.png', '/images/DODUVropa.png'] },
-    { id: 'reel', type: 'video' as const, aspect: 'portrait' as const, src: '/images/REEL1.mp4' },
+    { id: 'gloria', type: 'video-cycle' as const, aspect: 'landscape' as const, sources: ['/projects/gloria-1.mp4', '/projects/gloria-2.mp4'] },
+    { id: 'conercial', type: 'video' as const, aspect: 'landscape' as const, src: '/projects/comercial.mp4' },
+    { id: 'fotos', type: 'image-cycle' as const, aspect: 'landscape' as const, sources: ['/projects/fotododuv-1.png', '/projects/fotododuv-2.png', '/projects/doduvropa.png'] },
+    { id: 'reel', type: 'video' as const, aspect: 'portrait' as const, src: '/projects/reel-1.mp4' },
   ],
 }
 
 export const projects = [
-  { id: 'kuro-sushi', title: 'Kuro Sushi', category: 'Sitio Web', aspect: 'landscape' as const, video: '/videos/Kurosushivideo.mp4' },
-  { id: 'arquitectura', title: 'Estudio de Arquitectura', category: 'Sitio Web', aspect: 'landscape' as const, video: '/images/Arquitectura.mp4' },
-  { id: 'seguros', title: 'Agentes de Seguros', category: 'Sitio Web', aspect: 'landscape' as const, images: ['/images/ROCAN1.png', '/images/ROCAN2.png', '/images/ROCAN3.png'] },
-  { id: 'kiosko', title: 'Kiosko', category: 'Aplicación', aspect: 'portrait' as const, video: '/videos/Aerokisko.mp4' },
+  { id: 'kuro-sushi', title: 'Kuro Sushi', category: 'Sitio Web', aspect: 'landscape' as const, video: '/projects/kuro-sushi.mp4' },
+  { id: 'arquitectura', title: 'Estudio de Arquitectura', category: 'Sitio Web', aspect: 'landscape' as const, video: '/projects/arquitectura.mp4' },
+  { id: 'seguros', title: 'Agentes de Seguros', category: 'Sitio Web', aspect: 'landscape' as const, images: ['/projects/rocan-1.png', '/projects/rocan-2.png', '/projects/rocan-3.png'] },
+  { id: 'kiosko', title: 'Kiosko', category: 'Aplicación', aspect: 'portrait' as const, video: '/projects/kiosko.mp4' },
 ]
 
 export const metrics = [

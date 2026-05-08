@@ -76,7 +76,7 @@ export default function Hero() {
 
       <div ref={symbolRef} className={styles.symbol} aria-hidden="true">
         <Image
-          src="/images/o-symbol.png"
+          src="/brand/o-symbol.png"
           alt=""
           width={400}
           height={400}

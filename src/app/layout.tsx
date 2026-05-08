@@ -14,9 +14,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'doduv' }],
   keywords: ['doduv', 'desarrollo web', 'software', 'inteligencia artificial', 'Nuevo León', 'Monterrey', 'estudio de tecnología'],
   icons: {
-    icon: '/images/o-symbol.svg',
-    shortcut: '/images/o-symbol.svg',
-    apple: '/images/o-symbol.svg',
+    icon: '/brand/o-symbol.svg',
+    shortcut: '/brand/o-symbol.svg',
+    apple: '/brand/o-symbol.svg',
   },
   openGraph: {
     type: 'website',
@@ -47,7 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <head>
-        <link rel="preload" as="image" href="/images/hands.png" />
+        <link rel="preload" as="image" href="/hero/hands.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
       </head>
       <body>{children}</body>

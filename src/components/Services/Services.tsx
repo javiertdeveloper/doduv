@@ -55,7 +55,7 @@ export default function Services() {
       {/* Desktop: dimetrodon black silhouette */}
       <div className={styles.dimetrodon} aria-hidden="true">
         <Image
-          src="/images/dimetrodon.png"
+          src="/hero/dimetrodon.png"
           alt=""
           width={1200}
           height={680}
@@ -66,7 +66,7 @@ export default function Services() {
       {/* Mobile: dino PNG silhouette */}
       <div className={styles.dino} aria-hidden="true">
         <Image
-          src="/images/dino.png"
+          src="/hero/dino.png"
           alt=""
           width={800}
           height={600}

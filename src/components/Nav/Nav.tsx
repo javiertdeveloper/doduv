@@ -124,7 +124,7 @@ export default function Nav() {
       <nav ref={navRef} className={styles.nav}>
         <div ref={logoRef} className={styles.logo}>
           <Image
-            src="/images/logo-negro.svg"
+            src="/brand/logo-negro.svg"
             alt="doduv"
             width={80}
             height={24}
