@@ -19,11 +19,11 @@
 }
 
 .halfLeft {
-  clip-path: inset(0 50% 0 0);
+  clip-path: inset(0 52% 0 0);
 }
 
 .halfRight {
-  clip-path: inset(0 0 0 50%);
+  clip-path: inset(0 0 0 48%);
 }
 
 /* Desktop only — slight visual shift on left half. Mobile keeps perfect seam. */
@@ -55,7 +55,7 @@
 
 @media (max-width: 768px) {
   .container {
-    left: -1.6%;
+    left: 1%;
     width: 103%;
     transform: translateY(-50%) scale(1.35);
   }

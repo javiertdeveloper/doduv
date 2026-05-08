@@ -188,7 +188,6 @@ export default function Nav() {
 
           <div className={styles.overlayFooter}>
             <span>doduv — {siteConfig.location}</span>
-            <span>{siteConfig.email}</span>
           </div>
         </div>
       )}

@@ -7,3 +7,13 @@ a { color: inherit; text-decoration: none; }
 img, video { max-width: 100%; display: block; }
 button { border: none; background: none; cursor: pointer; font-family: inherit; }
 ::selection { background: var(--gold); color: var(--espresso); }
+
+/* Respect users who prefer reduced motion (a11y best practice) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

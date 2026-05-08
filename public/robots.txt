@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /_next/
+Disallow: /404
+
+Sitemap: https://doduv.com/sitemap.xml

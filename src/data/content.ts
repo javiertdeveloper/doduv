@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: 'Doduv',
   tagline: 'Lo digital, bien hecho.',
-  email: 'contacto@doduv.com',
+  email: 'doduv@gmail.com',
   location: 'México',
   social: {
     instagram: 'https://instagram.com/doduv',

@@ -58,9 +58,14 @@ export default function Contact() {
 
       <div ref={revealRef} className={styles.contact}>
         <p className={styles.question}>¿Llegaste hasta acá?</p>
-        <p className={styles.cta}>Hablemos.</p>
-        <a href={`mailto:${siteConfig.email}`} className={styles.email}>
-          {siteConfig.email}
+        <a
+          href={siteConfig.social.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.ctaButton}
+          aria-label="Iniciar conversación por WhatsApp"
+        >
+          <span className={styles.ctaText}>Hablemos.</span>
         </a>
       </div>
 

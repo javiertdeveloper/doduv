@@ -34,30 +34,35 @@
   margin-bottom: 1.5rem;
 }
 
-.cta {
+/* Main CTA — clickable button that opens WhatsApp */
+.ctaButton {
+  display: inline-block;
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 500;
   color: var(--gold);
-  margin-bottom: 2rem;
-}
-
-.email {
-  font-family: var(--font-body);
-  font-size: clamp(0.85rem, 1.2vw, 1rem);
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  color: var(--cream);
   text-decoration: none;
-  padding: 0.75em 2em;
-  border: 1px solid rgba(196, 154, 74, 0.3);
-  border-radius: 2px;
-  transition: border-color 0.3s ease, color 0.3s ease;
+  padding: 0.45em 1.4em;
+  border: 1px solid rgba(196, 154, 74, 0.35);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.4s cubic-bezier(0.25, 0.1, 0.25, 1),
+              background-color 0.4s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.email:hover {
+.ctaText {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.ctaButton:hover {
   border-color: var(--gold);
-  color: var(--gold);
+  background-color: rgba(196, 154, 74, 0.06);
+}
+
+.ctaButton:hover .ctaText {
+  transform: translateY(-2px);
 }
 
 .brand {
