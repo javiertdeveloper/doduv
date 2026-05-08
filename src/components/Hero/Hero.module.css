@@ -1,7 +1,8 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100vh; /* fallback for older browsers */
+  height: 100dvh; /* dynamic viewport — respects mobile browser chrome */
   background: var(--chocolate);
   overflow: hidden;
   display: flex;
@@ -164,14 +165,14 @@
 
 @media (max-width: 768px) {
   .glyphLeft {
-    font-size: clamp(11rem, 55vw, 22rem);
-    top: 4vh;
+    font-size: clamp(9rem, 42vw, 18rem);
+    top: 4dvh;
     left: 0;
   }
 
   .glyphRight {
-    font-size: clamp(11rem, 55vw, 22rem);
-    bottom: 18vh;
+    font-size: clamp(9rem, 42vw, 18rem);
+    bottom: 14dvh;
     right: 0;
   }
 
